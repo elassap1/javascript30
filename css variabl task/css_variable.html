@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+:root{
+    --space: 10px;
+    --blur: 10px;
+    --clr: rgb(72, 88, 72);
+}
+span{
+    color: var(--clr);
+    margin: 10px;
+}
+body{
+    box-sizing: border-box;
+    background: rgb(56, 61, 83);
+    margin: var(--space);
+}
+header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+    font-weight: 700;
+    color: white;
+    width: 95vw;
+    height: 10vh;
+}
+section{
+    justify-content: center;
+    width: 95vw;
+    height: 80vh;
+}
+section > div:nth-child(2){
+    display: flex;
+    place-items: center;
+    place-content: center;
+    filter: blur(var(--blur));
+    background: var(--clr);
+    background: var(--clr);
+    height: 80%;
+    width: 95%;
+}
+#item{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 15vh;
+}
+#item > div{
+    font-size: 30px;
+    margin: 0px 20px;
+}
+input{
+    margin: 10px;
+    padding-top: 0px;
+}
+video{
+    width: 60vw;
+    height: 50vh;
+}
+.co{
+    height: 40px;
+    width: 40px;
+    background: rgb(56, 61, 83);
+    outline: none;
+    border-radius: 50%;
+}
+</style>
+<body>
+    <header>Update<span>CSS</span>Variables With <span>JS</span></header>
+    <section>
+        <div id="item">
+            <div>Spacing:<input type="range" class="sp" name="space" data-px="px"></div>
+            <div>Blur:<input type="range" class="bl" name="blur" data-px="px"></div>
+            <div>Base Color:<input type="color" class="co" name="clr" data-px=""></div>
+        </div>
+        <div>
+            <video src="https://ak.picdn.net/shutterstock/videos/1042275847/preview/stock-footage-tangier-morocco-night-panoramic-view-of-the-city-of-tangier-corniche-of-tangier.webm" controls></video>
+        </div>
+    </section>
+    <footer></footer>
+<script>
+    const input = document.querySelectorAll('input');
+    function update(){
+        document.documentElement.style.setProperty(`--${this.name}`,this.value+`${this.dataset.px}`);
+        console.log(this.value);
+    }
+    input.forEach(input => input.addEventListener('mouseout',update));
+</script>
+</body>
+</html>
